@@ -12,13 +12,13 @@ import java.util.List;
 public class ReadPokemon {
 
     private String filePath;
-    private List<Pokemon> listPokemon = new ArrayList<>();
+    private ArrayList<Pokemon> listPokemon = new ArrayList<>();
 
     public ReadPokemon(String path) {
         this.filePath = path;
     }
 
-    public List<Pokemon> getPokemonList() {
+    public ArrayList<Pokemon> getPokemonList() {
         ObjectMapper objectMapper = new ObjectMapper(); // Create an instance
 
         try {
@@ -28,7 +28,7 @@ public class ReadPokemon {
             for(JsonNode pokemonNode:rootNode){
                 int id = pokemonNode.get("id").asInt();
                 String name = pokemonNode.get("name").get("english").asText();
-                List<String> types = new ArrayList<>();
+                ArrayList<String> types = new ArrayList<>();
                 for(JsonNode typeNode: pokemonNode.get("type")){
                     types.add(typeNode.asText());
                 }
