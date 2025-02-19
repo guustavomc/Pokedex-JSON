@@ -21,27 +21,67 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             System.out.println("\n1 - Find By ID");
             System.out.println("\n2 - Find By Name");
+            System.out.println("\n3 - Build your Team");
+
 
             Integer value = scanner.nextInt();
             switch (value){
                 case 1:
                     System.out.println("Write the ID");
-                    Integer id = scanner.nextInt();
+                    int id = scanner.nextInt();
                     Pokemon pokemonID = findPokemonByID(pokedex, id);
-                    System.out.println(pokemonID.getName());
+                    System.out.println(pokemonID.pokemonDescription());
                     break;
                 case 2:
                     System.out.println("Write the Name");
                     scanner.nextLine();
                     String name = scanner.nextLine();
                     Pokemon pokemonName = findPokemonByName(pokedex, name);
-                    System.out.println(pokemonName.getId());
+                    System.out.println(pokemonName.pokemonDescription());
                     break;
+                case 3:
+                    System.out.println("Build your Team");
+                    int i=0;
+                    int j=1;
+                    ArrayList <Pokemon> team = new ArrayList<>();
+                    scanner.nextLine();
+                    while(i<6){
+                        System.out.println("Select Pokemon number " + j +" - Type Name or ID");
+
+                        String input = scanner.nextLine();
+                        if(input.matches("\\d+")){
+                            int pokemonIdTeam = Integer.parseInt(input);
+                            team.add(findPokemonByID(pokedex, pokemonIdTeam));
+                        }
+                        else{
+                            team.add(findPokemonByName(pokedex, input));
+
+                        }
+                        i+=1;
+                        j+=1;
+                    }
+                    for(Pokemon pokemon: team){
+                        System.out.println(pokemon.pokemonDescription());
+                    }
+                    System.out.println("Would you like to save the team on a text file? Y/N" );
+                    String decision = scanner.nextLine();
+
+                    if(decision.equalsIgnoreCase("Y")){
+                        System.out.println("Write file name");
+                        String fileName = scanner.nextLine();
+                        TeamWrite writeTeam = new TeamWrite(fileName+".txt",team);
+
+                    }
+                    else{
+                        break;
+                    }
             }
         }
     }
 
     public static Pokemon findPokemonByID(ArrayList <Pokemon> pokedex, int id){
+        return pokedex.get(id-1);
+        /*
         int left = 0;
         int right = pokedex.size()-1;
 
@@ -58,7 +98,7 @@ public class Main {
                 left = middle+1;
             }
         }
-        return null;
+        return null; */
     }
 
     public static Pokemon findPokemonByName(ArrayList <Pokemon> pokedex, String name){

@@ -47,4 +47,8 @@ public class Pokemon {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String pokemonDescription(){
+            return getName() + "(" + getId() + ") - Type" + getType() + ", " + getDescription();
+    }
 }
