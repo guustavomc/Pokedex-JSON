@@ -1,6 +1,7 @@
 // Project made using JSON from https://github.com/Purukitto/pokemon-data.json/tree/master
 package org.example;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -11,10 +12,10 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.printf("Pokedex");
 
-        String path = "src/main/resources/pokedex.json";
+        String path = "pokedex.json";
 
         ReadPokemon read = new ReadPokemon(path);
-        ArrayList <Pokemon> pokedex = read.getPokemonList();
+        ArrayList<Pokemon> pokedex = read.getPokemonList();
 
         boolean inProgress=true;
         while(inProgress){
@@ -22,6 +23,8 @@ public class Main {
             System.out.println("\n1 - Find By ID");
             System.out.println("\n2 - Find By Name");
             System.out.println("\n3 - Build your Team");
+            System.out.println("\n4 - Quit");
+
 
 
             Integer value = scanner.nextInt();
@@ -70,11 +73,12 @@ public class Main {
                         System.out.println("Write file name");
                         String fileName = scanner.nextLine();
                         TeamWrite writeTeam = new TeamWrite(fileName+".txt",team);
-
                     }
                     else{
                         break;
                     }
+                case 4:
+                    inProgress=false;
             }
         }
     }

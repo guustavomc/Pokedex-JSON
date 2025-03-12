@@ -22,6 +22,14 @@
 
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.json</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <!-- Use maven-assembly-plugin to create a fat JAR -->
             <plugin>
