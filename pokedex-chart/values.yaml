@@ -1,0 +1,9 @@
+replicaCount: 2
+
+image:
+  repository: pokedex
+  tag: latest
+
+service:
+  type: NodePort
+  port: 80
