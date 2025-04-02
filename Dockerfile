@@ -1,27 +1,12 @@
-# Usa Maven com JDK 21
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+FROM openjdk:21-jdk-slim
 
 WORKDIR /app
 
-# Copia o arquivo pom.xml e baixa as dependências
-COPY pom.xml ./
-RUN mvn dependency:go-offline
+# Copy the JAR file from the target directory
+COPY target/Pokedex-JSON-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
 
-# Copia o restante do código-fonte
-COPY src ./src
-
-# Compila o projeto e gera o JAR final
-RUN mvn clean package
-
-# Usa uma imagem menor apenas com o JRE 21 para rodar a aplicação
-FROM eclipse-temurin:21-jre
-
-WORKDIR /app
-
-# Copia o JAR correto gerado pelo maven-assembly-plugin
-COPY --from=build /app/target/Pokedex-JSON-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
-
-# Copy pokedex.json to /app
+# Copy the pokedex.json file into the container
 COPY pokedex.json /app/pokedex.json
 
+# Run the application
 CMD ["java", "-jar", "app.jar"]
