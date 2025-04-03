@@ -17,6 +17,14 @@ public class Main {
         ReadPokemon read = new ReadPokemon(path);
         ArrayList<Pokemon> pokedex = read.getPokemonList();
 
+        // Check if running inside Kubernetes (optional)
+        boolean isKubernetes = System.getenv("KUBERNETES_SERVICE_HOST") != null;
+
+        if (isKubernetes) {
+            System.out.println("Running inside Kubernetes. Exiting after loading data...");
+            return;
+        }
+
         boolean inProgress=true;
         while(inProgress){
             Scanner scanner = new Scanner(System.in);

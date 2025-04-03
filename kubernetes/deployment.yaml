@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokedex-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pokedex-app
+  template:
+    metadata:
+      labels:
+        app: pokedex-app
+    spec:
+      containers:
+        - name: pokedex-app
+          image: my-pokedex-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
