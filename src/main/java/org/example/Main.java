@@ -80,7 +80,7 @@ public class Main {
                     if(decision.equalsIgnoreCase("Y")){
                         System.out.println("Write file name");
                         String fileName = scanner.nextLine();
-                        TeamWrite writeTeam = new TeamWrite(fileName+".txt",team);
+                        TeamWrite writeTeam = new TeamWrite(fileName,team);
                     }
                     else{
                         break;

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class TeamWrite {
 
     public TeamWrite(String filename, ArrayList<Pokemon> team){
-        String path = "src/main/java/org/example/teams/"+ filename;
+        String path = "src/main/java/org/example/teams/"+ filename+".txt";
+
         try(FileWriter file = new FileWriter(path)) {
             for (Pokemon pokemon: team){
                 file.write(pokemon.pokemonDescription()+"\n");
