@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReadPokemonService {
@@ -51,6 +52,11 @@ public class ReadPokemonService {
 
     public Pokemon findPokemonByName(List <Pokemon> pokedex, String name){
         return (Pokemon) pokedex.stream().filter(pokemon -> pokemon.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+
+    }
+
+    public List<Pokemon> findPokemonByType(String type){
+        return (List<Pokemon>) listPokemon.stream().filter(pokemon -> pokemon.getType().contains(type)).collect(Collectors.toList());
 
     }
 }

@@ -5,11 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequestMapping("/api/pokemon")
 public class PokedexController {
 
@@ -26,12 +27,18 @@ public class PokedexController {
     }
 
     @GetMapping("/id/{id}")
-    public Pokemon getPokemonByID(@PathVariable int id){
+    public Pokemon getPokemonByID(@PathVariable("id") int id){
+        
         return service.findPokemonByID(service.findAllPokemon(),id);
     }
 
     @GetMapping("/search/{search}")
-    public Pokemon getPokemonByName(@PathVariable String name){
+    public Pokemon getPokemonByName(@PathVariable("search") String name){
         return service.findPokemonByName(service.findAllPokemon(),name);
+    }
+
+    @GetMapping("/type/{type}")
+    public List<Pokemon> getPokemonByType(@PathVariable("type") String type){
+        return service.findPokemonByType(type);
     }
 }

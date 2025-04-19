@@ -1,12 +1,10 @@
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
 # Copy the JAR file from the target directory
-COPY target/Pokedex-JSON-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
+COPY target/pokedex-api-0.0.1-SNAPSHOT.jar app.jar
 
-# Copy the pokedex.json file into the container
-COPY pokedex.json /app/pokedex.json
 
 # Run the application
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]

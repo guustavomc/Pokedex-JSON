@@ -6,19 +6,24 @@ Before deploying, ensure your Java application builds successfully:
 
     mvn clean package
 
-2. Run
+2. Run java application
 
-mvn spring-boot:run
+    mvn spring-boot:run
 
+    Examples of access using API:
+    http://localhost:8080/api/pokemon/id/1
+    http://localhost:8080/api/pokemon/squirtle
+    
 
 3. Containerizing the App with Docker
 
 First, we package our Java application into a Docker container.
 
-    docker build -t my-pokedex-app .
+    docker build -t pokedex-api .
 
 Test if the container runs properly:
 
-    docker run -it --rm my-pokedex-app
+    docker run -p 8080:8080 pokedex-api
+
 
 
