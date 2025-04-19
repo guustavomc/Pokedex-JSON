@@ -6,7 +6,12 @@ Before deploying, ensure your Java application builds successfully:
 
     mvn clean package
 
-2. Containerizing the App with Docker
+2. Run
+
+mvn spring-boot:run
+
+
+3. Containerizing the App with Docker
 
 First, we package our Java application into a Docker container.
 
