@@ -3,6 +3,7 @@ package org.example;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class ReadPokemonService {
 
-    private String filePath = "src/main/resources/pokedex.json";;
+    //private String filePath = "src/main/resources/pokedex.json";;
     private ArrayList<Pokemon> listPokemon = new ArrayList<>();
 
     @PostConstruct
@@ -22,7 +23,8 @@ public class ReadPokemonService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            JsonNode rootNode = objectMapper.readTree(new File(filePath));
+            ClassPathResource resource = new ClassPathResource("pokedex.json");
+            JsonNode rootNode = objectMapper.readTree(resource.getInputStream());
 
             for(JsonNode pokemonNode:rootNode){
                 int id = pokemonNode.get("id").asInt();

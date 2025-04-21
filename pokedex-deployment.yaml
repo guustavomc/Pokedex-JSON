@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokedex-api
+  namespace: default
+  labels:
+    app: pokedex-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pokedex-api
+  template:
+    metadata:
+      labels:
+        app: pokedex-api
+    spec:
+      containers:
+        - name: pokedex-api
+          image: guustavomccb/pokedex-api:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /api/pokemon
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/pokemon
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
