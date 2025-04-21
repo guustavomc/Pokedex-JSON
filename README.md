@@ -6,13 +6,15 @@ Before deploying, ensure your Java application builds successfully:
 
     mvn clean package
 
-2. Run java application
+2. Run java application:
 
     mvn spring-boot:run
 
-    Examples of access using API:
-    http://localhost:8080/api/pokemon/id/1
-    http://localhost:8080/api/pokemon/squirtle
+
+Examples of access using API:
+
+Get Pokemon with ID 1: "http://localhost:8080/api/pokemon/id/1"
+Get Pokemon with Name Squirtle: "http://localhost:8080/api/pokemon/squirtle"
     
 
 3. Containerizing the App with Docker

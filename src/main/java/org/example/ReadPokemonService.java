@@ -56,7 +56,7 @@ public class ReadPokemonService {
     }
 
     public List<Pokemon> findPokemonByType(String type){
-        return (List<Pokemon>) listPokemon.stream().filter(pokemon -> pokemon.getType().contains(type)).collect(Collectors.toList());
+        return findAllPokemon().stream().filter(pokemon -> pokemon.getType().stream().anyMatch(t -> t.trim().equalsIgnoreCase(type))).collect(Collectors.toList());
 
     }
 }

@@ -40,5 +40,6 @@ public class PokedexController {
     @GetMapping("/type/{type}")
     public List<Pokemon> getPokemonByType(@PathVariable("type") String type){
         return service.findPokemonByType(type);
+
     }
 }
