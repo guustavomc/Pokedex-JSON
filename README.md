@@ -83,7 +83,7 @@ Pokedex-Search-Application/
 
 - `pokedex.json`: Contains Pokémon data (sourced from Purukitto/pokemon-data.json).
 - `Dockerfile`: Defines the Docker image build process.
-- Kubernetes manifests (`pokedex-deployment.yaml`, `pokedex-service.yaml`, `pokedex-ingress.yaml`): Define the Kubernetes resources.
+- Kubernetes manifests (`pokedex-deployment.yaml`, `pokedex-service.yaml`): Define the Kubernetes resources.
 
 ## Step 1: Build the JAR
 
