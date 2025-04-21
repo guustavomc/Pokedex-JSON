@@ -63,7 +63,7 @@ brew install kubectl
 ## Project Structure
 
 ```
-Pokedex-JSON/
+Pokedex-Search-Application/
 ├── src/
 │   ├── main/
 │   │   ├── java/org/example/
@@ -95,7 +95,7 @@ The application is built using Maven to create an executable JAR file.
    mvn clean package -DskipTests
    ```
 
-    - This compiles the code, runs the build, and generates `target/Pokedex-JSON-1.0-SNAPSHOT.jar`.
+    - This compiles the code, runs the build, and generates `target/Pokedex-Search-Application-1.0-SNAPSHOT.jar`.
     - The `-DskipTests` flag skips tests for faster builds (ensure tests pass if you have them).
 
 2. **Run the Application Locally** (Optional):
@@ -420,7 +420,7 @@ For HTTP access with a domain (e.g., `pokedex.local`), use an Ingress.
 
 - **Docker Build Fails**:
     - Verify `pokedex.json` is in `src/main/resources`.
-    - Check `Dockerfile` syntax and JAR name (`Pokedex-JSON-1.0-SNAPSHOT.jar`).
+    - Check `Dockerfile` syntax and JAR name (`Pokedex-Search-Application-1.0-SNAPSHOT.jar`).
     - Ensure Docker Desktop is running (Windows).
 
 - **Docker Push to Docker Hub Fails**:
@@ -542,7 +542,7 @@ If you change the application code (e.g., update `PokedexController.java` or `po
    mvn clean package -DskipTests
    ```
 
-    - This rebuilds the JAR file at `target/Pokedex-JSON-1.0-SNAPSHOT.jar`.
+    - This rebuilds the JAR file at `target/Pokedex-Search-Application-1.0-SNAPSHOT.jar`.
 
 2. **Rebuild and Push the Docker Image**:
 
